@@ -9,7 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Setter
 @Getter
-public class TransactionalExceptionHandler {
+public class TransactionalBusinessException {
 	private int errorCode;
 	private String status;
 	private String message;
