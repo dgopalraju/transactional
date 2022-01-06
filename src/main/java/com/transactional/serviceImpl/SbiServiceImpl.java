@@ -15,6 +15,7 @@ import com.transactional.service.IciciService;
 import com.transactional.service.SbiService;
 
 @Service
+@Transactional(rollbackFor  = Exception.class)
 public class SbiServiceImpl implements SbiService {
 
 	@Autowired
@@ -24,8 +25,7 @@ public class SbiServiceImpl implements SbiService {
 	private IciciService iciciService;
 
 	@Override
-	//@Transactional(propagation = Propagation.REQUIRED)
-	@Transactional(noRollbackFor = NullPointerException.class)
+	@Transactional
 	public void doTransaction(TransactionalForm transactionalForm) {
 		Sbi sbi = new Sbi();
 		sbi.setDebiterName(transactionalForm.getDebiterName());

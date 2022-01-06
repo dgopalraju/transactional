@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,7 +28,7 @@ public class IciciServiceImpl implements IciciService {
 	//@Transactional(propagation = Propagation.MANDATORY)
 	//@Transactional(propagation = Propagation.REQUIRES_NEW)
 	//@Transactional(propagation = Propagation.NOT_SUPPORTED)
-	@Transactional(propagation = Propagation.NEVER)
+	@Transactional(isolation = Isolation.SERIALIZABLE)
 	public void doTransaction(Sbi sbi, TransactionalForm transactionalForm) {	
 		Icici icici = new Icici();
 		log.info("ICICI--->>>>", icici.toString());

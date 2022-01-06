@@ -23,7 +23,7 @@ public class TransactionalController {
 			sbiService.doTransaction(transactionalForm);
 		} catch (NullPointerException e) {
 			return new ResponseEntity<TransactionalBusinessException>(new TransactionalBusinessException(1001,
-					"Transaction Failed!!!", "Sorry for the inconvience. Please try again after some time"),
+					"Transaction Failed!!!", "Sorry for the inconvience. The receiver bank is not accepting the amount. Please try again after some time"),
 					HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<String>(
